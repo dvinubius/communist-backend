@@ -68,7 +68,7 @@ We're not concerned with authentication, associating adoration with a particular
 
 
 > 📝 🙏 While working on the assignment, please make sure to stop your frontend dev process when you're not actively working on it. 
-Ootherwise the backend may run out of resources due to too many request.
+> I'm on the free tier on heroku, so regular pollling from multiple frontends over multiple days could cause the backend to run out of credit.
 
 
 ## STEP 1
