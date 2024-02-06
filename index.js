@@ -20,7 +20,7 @@ const historyEntry = (mood) => ({
 const leaderHistory = [historyEntry(randomMood())];
 setInterval(() => leader.history.push(historyEntry(randomMood())), 600_000);
 
-const currentMood = () => leaderHistory[leaderHistory.length - 1].mood;
+const currentMood = () => leaderHistory[leaderHistory.length - 1];
 
 // ----- ------------- -----
 
