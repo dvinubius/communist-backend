@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const cors = require('cors');
 app.use(cors());
@@ -54,5 +54,5 @@ app.post('/api/v1/adore', async (req, res) => {
 
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening on port ${port}`);
 });
