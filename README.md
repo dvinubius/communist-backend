@@ -7,7 +7,7 @@ The communist party has built a backend that tracks the moods of our beloved lea
 
 ## Features 
 
-The backend runs on heroku and exposes 3 endpoints publicly:
+The backend is LIVE on heroku and has 3 endpoints:
 
 
 ### Current Mood
@@ -49,7 +49,7 @@ returns JSON of the form
   message: string,        // confirmation
   data: Mood              // The updated current mood
 }
-
+```
 
 ## Limitations
 
