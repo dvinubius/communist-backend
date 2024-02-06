@@ -7,7 +7,7 @@ The communist party has built a backend that tracks the moods of our beloved lea
 
 ## Features 
 
-The backend exposes 3 endpoints publicly:
+The backend runs on heroku and exposes 3 endpoints publicly:
 
 
 ### Current Mood
@@ -70,7 +70,6 @@ The page on that route displays
 
 The page also has an "Adore" button.
 
-0. Start the communist-backend locally - `npm install` , `npm start`
 1. To create a new react app, use `npx create-react-app`. If you prefer typescript, use `npx create-react-app --template typescript`.
 2. Create components as you see fit
 3. Style the UI as you see fit
