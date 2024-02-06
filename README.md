@@ -11,7 +11,7 @@ The backend exposes 3 endpoints publicly:
 
 
 ### Current Mood
-`GET localhost:5000/api/v1/current-mood`
+`GET https://communist-backend-ac625ad53940.herokuapp.com/api/v1/current-mood`
 
 returns JSON of the form 
 
@@ -26,7 +26,7 @@ returns JSON of the form
 ```
 
 ### Mood History
-`GET localhost:5000/api/v1/mood-history` 
+`GET https://communist-backend-ac625ad53940.herokuapp.com/api/v1/mood-history` 
 
 returns JSON of the form 
 
@@ -38,7 +38,7 @@ returns JSON of the form
 
 ### Express Adoration
 
-`POST localhost:5000/api/v1/adore`
+`POST https://communist-backend-ac625ad53940.herokuapp.com/api/v1/adore`
 
 Increments adoration count, associated with the leader's current mood
 
