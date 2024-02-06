@@ -35,10 +35,7 @@ setInterval(() => {
 
 app.get('/api/v1/current-mood', async (req, res) => {
   await new Promise(resolve => setTimeout(resolve, 3000));
-  res.json({data: {
-    mood: leader.mood,
-    timestamp: currentTime()
-  }});
+  res.json({data: leader.history[leader.history.length - 1]});
 });
 
 app.get('/api/v1/mood-history', async (req, res) => {
