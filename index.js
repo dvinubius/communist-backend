@@ -17,16 +17,10 @@ const historyEntry = (mood) => ({
   time: new Date().toISOString(),
   adorations: 0
 });
-const initialMood = randomMood();
-const leader = {
-  mood: initialMood,
-  history: [historyEntry(initialMood)]
-}
-setInterval(() => {
-  const mood = randomMood();
-  leader.mood = mood;
-  leader.history.push(historyEntry(mood));
-}, 30_000);
+const leaderHistory = [historyEntry(randomMood())];
+setInterval(() => leader.history.push(historyEntry(randomMood())), 600_000);
+
+const currentMood = () => leaderHistory[leaderHistory.length - 1].mood;
 
 // ----- ------------- -----
 
@@ -35,17 +29,20 @@ setInterval(() => {
 
 app.get('/api/v1/current-mood', async (req, res) => {
   await new Promise(resolve => setTimeout(resolve, 3000));
-  res.json({data: leader.history[leader.history.length - 1]});
+  res.json({data: currentMood()});
 });
 
 app.get('/api/v1/mood-history', async (req, res) => {
   await new Promise(resolve => setTimeout(resolve, 3000));
-  res.json({data: leader.history});
+  res.json({data: leaderHistory});
 });
 
 app.post('/api/v1/adore', async (req, res) => {
-  leader.mood.adorations++;
-  res.json({data: 'Adoration received!'});
+  currentMood().adorations++;
+  res.json({data: {
+    message: 'Adoration received!',
+    data: currentMood()
+  }});
 });
 
 

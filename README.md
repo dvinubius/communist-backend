@@ -42,10 +42,21 @@ returns JSON of the form
 
 Increments adoration count, associated with the leader's current mood
 
+returns JSON of the form
+
+```
+{
+  message: string,        // confirmation
+  data: Mood              // The updated current mood
+}
+
 
 ## Limitations
 
-Not to ruin the story, but - under the hood, the backend just changes the mood randomly, every 30 seconds. 
+
+The responses for GET **intentionally take 3 seconds**, so that you have the chance to experiment with loading states when using this back end.
+
+Not to ruin the story, but - under the hood, the backend just changes the mood randomly, every 600 seconds. 
 
 We don't support setting the current mood.
 
@@ -54,6 +65,11 @@ We're not concerned with authentication, associating adoration with a particular
 
 
 # Assignments
+
+
+> 📝 🙏 While working on the assignment, please make sure to stop your frontend dev process when you're not actively working on it. 
+Ootherwise the backend may run out of resources due to too many request.
+
 
 ## STEP 1
 
@@ -68,13 +84,14 @@ The page on that route displays
 - the leader's current mood adoration count
 - the historical total adoration count
 
-The page also has an "Adore" button.
+The page also has an "Adore" button. By clicking, you express adoration towards the leader.
 
 1. To create a new react app, use `npx create-react-app`. If you prefer typescript, use `npx create-react-app --template typescript`.
 2. Create components as you see fit
 3. Style the UI as you see fit
-4. Upon successful adoration, display a success message to the user. Upon failed adoration (simulate this by stopping the backend), display an error message in the UI
-5. Take inspiration from the `react-basics` repo, if you need to. Use the `hooks` branch, where we have the `FetchUsers` component.
+4. Signal loading states to the user
+5. Upon successful adoration, display a success message to the user. Upon failed adoration (simulate this by stopping the backend), display an error message in the UI. Optionally you can also update adoration counts in the UI, as you receive the positive confirmation from the endpoint.
+6. Take inspiration from the `react-basics` repo, if you need to. Use the `hooks` branch, where we have the `FetchUsers` component. If you want to go fancy elegant, use dedicated hooks which only deal with fetching the current mood or fetching the mood history.
 
 ## STEP 2
  
@@ -82,9 +99,9 @@ In STEP 1 we've built a front end which doesn't update in time.
 
 The task is to add some logic that keeps your displayed info up-to-date. 
 
-Suppose the backend tracks real mood swings of your leader. You know that, historically, the leader has proven to change his mood as frequently as once every 30 seconds, but not more frequently than that. 
+Suppose the backend tracks real mood swings of your leader. You know that, historically, the leader has proven to change his mood as frequently as once every 600 seconds, but not more frequently than that. 
 
-In terms of adoration count, the hard requirement is to have it updating every 5 seconds.
+In terms of adoration count, the hard requirement is to have it update every 60 seconds.
 
 Work with the `useEffect` hook and use `setInterval()` according to your needs. As a reminder: the `useEffect` hook, if used with an empty array as the 2nd argument, runs exactly **once** after the component was mounted.
 
@@ -136,4 +153,4 @@ Use [React Google Charts](https://www.react-google-charts.com/examples/histogram
 
 Use dedicated components as you see fit. The histogram should appear on the same page as all the other stuff (let it scroll vertically on overflow)
 
-Update the histogram every 30 seconds, just like you update the display of the current mood.
+Update the histogram every 600 seconds, just like you update the display of the current mood.
