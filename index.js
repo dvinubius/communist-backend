@@ -5,16 +5,6 @@ const port = process.env.PORT || 5000;
 const cors = require('cors');
 app.use(cors());
 
-// --- robots.txt support for heroku deployment ---
-
-app.get('/robots.txt', function (req, res) {
-  res.type('text/plain');
-  res.send("User-agent: *\nDisallow: /");
-});
-
-// --- ------------- ---
-
-
 // ----- THE MOODY LEADER -----
 
 const MOODS = [
@@ -34,8 +24,6 @@ const currentMood = () => leaderHistory[leaderHistory.length - 1];
 // ----- ------------- -----
 
 
-
-
 app.get('/api/v1/current-mood', async (req, res) => {
   await new Promise(resolve => setTimeout(resolve, 3000));
   res.json({data: currentMood()});
@@ -53,6 +41,16 @@ app.post('/api/v1/adore', async (req, res) => {
     data: currentMood()
   }});
 });
+
+
+// --- robots.txt support for heroku deployment ---
+
+app.get('/robots.txt', function (req, res) {
+  res.type('text/plain');
+  res.send("User-agent: *\nDisallow: /");
+});
+
+// --- ------------- ---
 
 
 
