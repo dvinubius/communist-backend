@@ -5,6 +5,15 @@ const port = process.env.PORT || 5000;
 const cors = require('cors');
 app.use(cors());
 
+// --- robots.txt support for heroku deployment ---
+
+app.get('/robots.txt', function (req, res) {
+  res.type('text/plain');
+  res.send("User-agent: *\nDisallow: /");
+});
+
+// --- ------------- ---
+
 
 // ----- THE MOODY LEADER -----
 
